@@ -4,7 +4,7 @@ function syncFolder() {
     if [[ ! -d $3 ]]; then
         echo "$(date +"%Y-%m-%d:%T"):: $3 is not available. Make sure to use absolute paths."
     else
-        nextcloudcmd -u "$1" -p "$2" "$3" "$4" > /dev/null 2>&1
+        nextcloudcmd --non-interactive -u "$1" -p "$2" "$3" "$4" > /dev/null 2>&1
         if [[ $? != 0 ]]; then
             echo "$(date +"%Y-%m-%d:%T"):: Sync errored for folder: \"$SYNCPATH\"" >> ~/.nc_sync.log
         else
